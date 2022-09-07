@@ -1,24 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script
+      src="https://kit.fontawesome.com/9e21a44317.js"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Ms+Madi&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="/main.css" />
     <title>Document</title>
-</head>
+  </head>
 
-<body>
-    <div class="container">
-        <h1 class="title">
-            <%= title %>
-        </h1>
-        <p>
-            <%= gender %>
-        </p>
-        <img src="<%= image %>" title="<%= title %>" alt="<%= title %>" />
-    </div>
-</body>
-
+  <body class="body">
+    <header class="header">
+      <h1 class="title-h1">Movie details</h1>
+      <i class="fa-solid fa-film fa-xl"></i>
+    </header>
+    <main class="main">
+      <div class="container">
+        <section class="card">
+          <h2 class="title"><%= title %></h2>
+          <img
+            src="<%= image %>"
+            title="<%= title %>"
+            alt="<%= title %>"
+            class="img-movie"
+          />
+          <p class="gender"><%= gender %></p>
+        </section>
+      </div>
+    </main>
+  </body>
 </html>
