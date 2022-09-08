@@ -57,7 +57,7 @@ const App = () => {
         setUserPassword(response.password);
       });
     }
-    ls.set('userId', userId);
+    ls.set('userId', userId || '');
   }, [userId]);
 
   /*
