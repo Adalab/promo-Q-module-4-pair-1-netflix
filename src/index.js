@@ -2,7 +2,7 @@ const express = require('express');
 const cors = require('cors');
 const Database = require('better-sqlite3');
 /* const dataMovies = require('./data/movies.json'); */
-const users = require('./data/users.json');
+// const users = require('./data/users.json');
 const { response } = require('express');
 
 
@@ -66,6 +66,32 @@ server.get('/movie/:movieId', (req, res) => {
   console.log(foundMovie) */
   console.log(id);
   res.render('pages/movies', movieId);
+});
+
+const usersDb = new Database('./src/db/users.db', { verbose: console.log });
+
+server.post('/sign-up', (req, res) => {
+  const userData = req.body;
+  const userEmail = req.body.email;
+
+  const queryEmail = usersDb.prepare(`SELECT * FROM users WHERE email = ?`);
+  const user = queryEmail.get(userEmail);
+  console.log(user)
+
+  const result = {};
+
+  if (user) {
+    result.success = false;
+    result.errorMessage = "Usuaria ya existente";
+
+  } else {
+      const query = usersDb.prepare(`INSERT INTO users (email, password) VALUES (?, ?)`)
+      const queryResult = query.run(req.body.email, req.body.password);
+      result.success = true;
+      result.userId = queryResult.lastInsertRowid;
+    };
+ 
+  res.json(result)
 });
 
 const staticServer = './src/public-react/';
